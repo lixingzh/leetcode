@@ -40,6 +40,7 @@ def median(a, b):
             return (max_left + min_right) / 2.0
 
 #ANSWER:
+#https://discuss.leetcode.com/topic/4996/share-my-o-log-min-m-n-solution-with-explanation/2
  def median(A, B):
     m, n = len(A), len(B)
     if m > n:
