@@ -1,21 +1,24 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 import json
 import subprocess
 import sys
+from os.path import expanduser
+home = expanduser("~")
+
 #script to automatically cache leetcode questions
 accepted_language=['c','cpp','csharp','golang','java','javascript','python','ruby','swift']
 
 def init_leetcode_questions(language):
-    fp = open("/Users/magicxdms/.lc/all.json")
+    fp = open("%s/.lc/all.json"%(home))
     leetcode_json = json.load(fp)
 
     for i in range(len(leetcode_json)):
         id=leetcode_json[i]['id']
         print(id)
-        cmd = "/opt/local/bin/leetcode show %d -gx -l %s "%(id, language)
+        cmd = "leetcode show %d -gx -l %s "%(id, language)
         cmd_args=cmd.split()
         print(cmd_args)
-        subprocess.run(cmd_args, stdout=subprocess.PIPE)
+        subprocess.call(cmd_args, stdout=subprocess.PIPE)
 
 def validate(code):
     ret = False
